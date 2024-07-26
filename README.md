@@ -47,24 +47,24 @@ Após ter configurado todo o projeto, você pode iniciar um servidor local para 
 php artisan serve
 ```
 
-# Endpoints e Swagger
+# Swagger
+Para uma documentação completa dos endpoints, consulte o Swagger do projeto acessando via navegador a pagina http://localhost:8000/api/documentation
+
+## Resumo dos endpoints
 
 Quando o servidor local estiver aberto, as requisições podem ser feitas nos endpoints abaixo:
 
-## Endpoints de autenticação
+### Endpoints de autenticação
 POST /api/login -- Faz o login na aplicação e retorna o token a ser usado
 
 POST /api/logout -- Faz logout e quebra o token antigo
 
 POST /api/refresh -- Atualiza o token atual
 
-## Endpoints de dados
+### Endpoints de dados
 GET /dummies -- Retorna todos os registros da tabela
 
 GET /dummies/{id} -- Retorna o registro da tabela com o ID informado
-
-
-Para mais informações sobre os endpoints, consulte o Swagger entrando via navegador na pagina http://localhost:8000/api/documentation (caso esteja usando a URL padrão de testes)
 
 # Testes
 
