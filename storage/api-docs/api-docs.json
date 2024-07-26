@@ -1,0 +1,256 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "LiberFly test",
+        "description": "LiberFly test",
+        "contact": {
+            "email": "thiagobarrado99@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/api/login": {
+            "post": {
+                "summary": "Application login",
+                "operationId": "a3b306d14572d1f4bd6c064b3233e7b8",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "summary": "Application logout",
+                "operationId": "fe8f3429cd6979b3b4517e186505f9f9",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/api/refresh": {
+            "post": {
+                "summary": "Application token refresh",
+                "operationId": "2c27d311a2876560fcb5a754b556cdc5",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/api/dummies": {
+            "get": {
+                "summary": "Return all records from dummies table",
+                "operationId": "00b4927ed85da010291eb088550d88ac",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        },
+        "/api/dummies/{dummy_id}": {
+            "get": {
+                "summary": "Return all records from dummies table",
+                "operationId": "47453244e8a91d4f3584ba2ad13c7470",
+                "parameters": [
+                    {
+                        "name": "dummy_id",
+                        "in": "path",
+                        "description": "ID as a integer",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiResponse": {
+                "title": "API Response",
+                "description": "API Response",
+                "properties": {
+                    "status": {
+                        "title": "Status",
+                        "description": "Status",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "data": {
+                        "title": "Data",
+                        "description": "Data",
+                        "type": "array",
+                        "format": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ApiResponse"
+                }
+            }
+        },
+        "securitySchemes": {
+            "jwt": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "security": {
+        "0": {
+            "jwt": []
+        },
+        "jwt": {
+            "type": "apiKey",
+            "description": "Enter token in format (Bearer <token>)",
+            "name": "Authorization",
+            "in": "header",
+            "bearerFormat": "JWT"
+        }
+    }
+}
