@@ -1,7 +1,7 @@
 ## LiberFly test
 
 # Instalação
-Clone o repositório localmente e rode o comando abaixo para instalar as dependencias:
+Clone o repositório localmente e utilize o comando abaixo para instalar as dependencias:
 ```
 composer update
 ```
@@ -25,17 +25,17 @@ CREATE SCHEMA `teste-liberfly` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_uni
 
 # Configuração dos plugins
 
-Após configurar o banco, rode os comandos abaixo para configurar o plugin JWT:
+Após configurar o banco, utilize os comandos abaixo para configurar o plugin JWT:
 ```
 php artisan vendor:publish --provider="PHPOpenSourceSaver\JWTAuth\Providers\LaravelServiceProvider"
 php artisan jwt:secret
 ```
 
-O primeiro comando irá criar o arquivo de configuração JWT em /config/jwt.php, o segundo irá definir um novo secret JWT para ser usado no projeto.
+O primeiro comando irá criar o arquivo de configuração JWT em /config/jwt.php, o segundo irá definir um novo secret para ser usado no projeto.
 
 # Populando o banco
 
-Depois de configurar o banco, basta rodar o comando abaixo para gerar as tabelas no banco e criar alguns registros.
+Depois de configurar o banco, utilize o comando abaixo para gerar as tabelas no banco e criar alguns registros.
 ```
 php artisan migrate --seed
 ```
@@ -51,16 +51,20 @@ php artisan serve
 
 Quando o servidor local estiver aberto, as requisições podem ser feitas nos endpoints abaixo:
 
-Endpoints de autenticação
+## Endpoints de autenticação
 POST /api/login -- Faz o login na aplicação e retorna o token a ser usado
+
 POST /api/logout -- Faz logout e quebra o token antigo
+
 POST /api/refresh -- Atualiza o token atual
 
-Endpoints de dados
+## Endpoints de dados
 GET /dummies -- Retorna todos os registros da tabela
+
 GET /dummies/{id} -- Retorna o registro da tabela com o ID informado
 
-Para mais informações sobre os endpoints, consulte o Swagger entrando via navegador na pagina localhost:8000/api/documentation (caso esteja usando a URL padrão de testes)
+
+Para mais informações sobre os endpoints, consulte o Swagger entrando via navegador na pagina http://localhost:8000/api/documentation (caso esteja usando a URL padrão de testes)
 
 # Testes
 
