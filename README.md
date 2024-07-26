@@ -29,9 +29,10 @@ Após configurar o banco, utilize os comandos abaixo para configurar o plugin JW
 ```
 php artisan vendor:publish --provider="PHPOpenSourceSaver\JWTAuth\Providers\LaravelServiceProvider"
 php artisan jwt:secret
+php artisan l5-swagger:generate
 ```
 
-O primeiro comando irá criar o arquivo de configuração JWT em /config/jwt.php, o segundo irá definir um novo secret para ser usado no projeto.
+O primeiro comando irá criar o arquivo de configuração JWT em /config/jwt.php, o segundo irá definir um novo secret para ser usado no projeto e o terceiro irá re-criar o swagger da documentação.
 
 # Populando o banco
 
