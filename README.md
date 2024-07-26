@@ -1,14 +1,10 @@
 ## LiberFly test
 
-# Configuração dos plugins
-
-Clone o repositório localmente e rode os comandos abaixo para configurar o plugin JWT:
+# Instalação
+Clone o repositório localmente e rode o comando abaixo para instalar as dependencias:
 ```
-php artisan vendor:publish --provider="PHPOpenSourceSaver\JWTAuth\Providers\LaravelServiceProvider"
-php artisan jwt:secret
+composer update
 ```
-
-O primeiro comando irá criar o arquivo de configuração JWT em /config/jwt.php, o segundo irá definir um novo secret JWT para ser usado no projeto.
 
 # Configuração do banco
 
@@ -23,17 +19,33 @@ DB_PASSWORD=
 ```
 
 Crie um banco local com o nome **teste-liberfly**, preferencialmente usando o charset "utf8mb4" e collate "utf8mb4_unicode_ci" (em minha maquina Windows 11, utilizei o programa XAMPP para hospedar o banco), segue o comando para criação do banco:
-`CREATE SCHEMA 'teste-liberfly' DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`
+```
+CREATE SCHEMA `teste-liberfly` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+```
+
+# Configuração dos plugins
+
+Após configurar o banco, rode os comandos abaixo para configurar o plugin JWT:
+```
+php artisan vendor:publish --provider="PHPOpenSourceSaver\JWTAuth\Providers\LaravelServiceProvider"
+php artisan jwt:secret
+```
+
+O primeiro comando irá criar o arquivo de configuração JWT em /config/jwt.php, o segundo irá definir um novo secret JWT para ser usado no projeto.
 
 # Populando o banco
 
 Depois de configurar o banco, basta rodar o comando abaixo para gerar as tabelas no banco e criar alguns registros.
+```
 php artisan migrate --seed
+```
 
 # Iniciando um servidor local
 
 Após ter configurado todo o projeto, você pode iniciar um servidor local para testes usando o comando abaixo
+```
 php artisan serve
+```
 
 # Endpoints e Swagger
 
@@ -53,4 +65,6 @@ Para mais informações sobre os endpoints, consulte o Swagger entrando via nave
 # Testes
 
 Para garantir que o projeto esta corretamente configurado, utilize o comando abaixo:
+```
 php artisan test
+```
